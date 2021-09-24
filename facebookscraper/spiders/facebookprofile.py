@@ -13,11 +13,11 @@ class FacebookprofileSpider(CrawlSpider):
                 'User-Agent': 'Mozilla/5.0 (iPad; U; CPU OS 3_2 like Mac OS X; en-us) AppleWebKit/531.21.10 (KHTML, like Gecko) Version/4.0.4 Mobile/7B334b Safari/531.21.102011-10-16 20:23:10\r\n' 
                }
     rules = (
-        Rule(LinkExtractor(allow=r'Items/'), callback='parse_item', follow=True),
+        Rule(LinkExtractor(deny=()), callback='parse_item', follow=True),
     )
 
     def start_requests(self):
-        yield scrapy.Request(self.start_urls[0].format(username=self.username), self.parse_item)
+        yield scrapy.Request(self.start_urls[0].format(username=self.username), headers=self.HEADERS)
 
     def parse_item(self, response):
         item = {}
