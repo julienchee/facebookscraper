@@ -17,7 +17,7 @@ class FacebookprofileSpider(CrawlSpider):
     )
 
     def start_requests(self):
-        yield scrapy.Request(start_urls[0], self.parse_item)
+        yield scrapy.Request(self.start_urls[0], self.parse_item)
 
     def parse_item(self, response):
         item = {}
