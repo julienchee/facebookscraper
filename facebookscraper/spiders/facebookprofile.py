@@ -18,7 +18,9 @@ class FacebookprofileSpider(CrawlSpider):
 
     def parse_item(self, response):
         item = {}
+        print('start=================================')
         print(response)
+        print('end=================================')
         #item['domain_id'] = response.xpath('//input[@id="sid"]/@value').get()
         #item['name'] = response.xpath('//div[@id="name"]').get()
         #item['description'] = response.xpath('//div[@id="description"]').get()
