@@ -6,7 +6,7 @@ from scrapy.spiders import CrawlSpider, Rule
 class FacebookprofileSpider(CrawlSpider):
     name = 'facebookprofile'
     allowed_domains = ['facebook.com']
-    start_urls = ['https://www.facebook.com/pg/{username}/community/?ref=page_internal']
+    start_urls = ["https://www.facebook.com/pg/{username}/community/?ref=page_internal"]
     HEADERS = {
                 'Accept-language': 'en\r\n',
                 'Cookie': 'foo=bar\r\n',
@@ -17,7 +17,7 @@ class FacebookprofileSpider(CrawlSpider):
     )
 
     def start_requests(self):
-        yield scrapy.Request(self.start_urls[0], self.parse_item)
+        yield scrapy.Request(self.start_urls[0].format(username=self.username), self.parse_item)
 
     def parse_item(self, response):
         item = {}
