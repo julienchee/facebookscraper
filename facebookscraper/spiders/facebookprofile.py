@@ -16,6 +16,9 @@ class FacebookprofileSpider(CrawlSpider):
         Rule(LinkExtractor(allow=r'Items/'), callback='parse_item', follow=True),
     )
 
+    def start_requests(self):
+        yield scrapy.Request(start_urls[0], self.parse_item)
+
     def parse_item(self, response):
         item = {}
         print('start=================================')
